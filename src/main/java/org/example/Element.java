@@ -1,22 +1,27 @@
 package org.example;
 
-public class Element {
-    private String value; // Значение элемента
+public class Element implements Comparable<Element> {
+    private String value;
 
-    public Element(String value) { // Конструктор класса
+    public Element(String value) {
         this.value = value;
     }
 
-    public String getValue() { // Получение значения
+    public String getValue() {
         return value;
     }
 
-    public void setValue(String value) { // Установка значения
+    public void setValue(String value) {
         this.value = value;
     }
 
     @Override
-    public String toString() { // Возвращение строкового представления объекта
+    public String toString() {
         return value;
+    }
+
+    @Override
+    public int compareTo(Element other) {
+        return this.value.compareTo(other.getValue());
     }
 }
