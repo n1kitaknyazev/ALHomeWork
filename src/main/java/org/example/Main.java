@@ -16,7 +16,8 @@ public class Main {
                 System.out.println("4. Очистить список");
                 System.out.println("5. Получить размер списка");
                 System.out.println("6. Отсортировать список");
-                System.out.println("7. Выход");
+                System.out.println("7. Отобразить весь список");
+                System.out.println("8. Выход");
                 System.out.print("Выберите действие: ");
                 String action = scanner.nextLine();
 
@@ -50,6 +51,11 @@ public class Main {
                         System.out.println("Список отсортирован");
                         break;
                     case "7":
+                        for (int j = 0; j < list.size(); j++) {
+                            System.out.println((j + 1) + ". " + list.get(j).getValue());
+                        }
+                        break;
+                    case "8":
                         System.out.println("Выход из программы");
                         return;
                     default:
