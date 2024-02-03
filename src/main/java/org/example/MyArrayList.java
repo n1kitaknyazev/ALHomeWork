@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.Iterator;
 
 public class MyArrayList<T> implements List<T>, Iterable<T> {
+    public static final String INDEX_ERR_MSG = "Index: %d, Size %d";
     private Object[] elements;
     private int size = 0;
     private static final int DEFAULT_CAPACITY = 10;
@@ -23,7 +24,7 @@ public class MyArrayList<T> implements List<T>, Iterable<T> {
     @Override
     public void add(int index, T e) {
         if (index < 0 || index > size) {
-            throw new IndexOutOfBoundsException("Index: " + index + ", Size " + index);
+            throw new IndexOutOfBoundsException(String.format(INDEX_ERR_MSG, index, index));
         }
         if (size == elements.length) {
             ensureCapacity();
@@ -36,7 +37,7 @@ public class MyArrayList<T> implements List<T>, Iterable<T> {
     @Override
     public T get(int i) {
         if (i >= size || i < 0) {
-            throw new IndexOutOfBoundsException("Index: " + i + ", Size " + i);
+            throw new IndexOutOfBoundsException("Index: " + i + ", Size " + i); // тут тоже сообщение отформатировать
         }
         return (T) elements[i];
     }
@@ -44,7 +45,7 @@ public class MyArrayList<T> implements List<T>, Iterable<T> {
     @Override
     public T remove(int i) {
         if (i >= size || i < 0) {
-            throw new IndexOutOfBoundsException("Index: " + i + ", Size " + i);
+            throw new IndexOutOfBoundsException("Index: " + i + ", Size " + i);// и тут
         }
         Object item = elements[i];
         int numElts = elements.length - ( i + 1 ) ;
@@ -55,9 +56,7 @@ public class MyArrayList<T> implements List<T>, Iterable<T> {
 
     @Override
     public void clear() {
-        for (int i = 0; i < size; i++) {
-            elements[i] = null;
-        }
+        elements = new Object[elements.length];
         size = 0;
     }
 
