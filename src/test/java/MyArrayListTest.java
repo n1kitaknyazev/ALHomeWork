@@ -16,7 +16,7 @@ public class MyArrayListTest {
     }
 
     @Test
-    public void testAddAndGet() {
+    public void testAddAndGet() { // тесты хорошие
         Element element = new Element("test");
         list.add(element);
         assertEquals("test", list.get(0).getValue());
